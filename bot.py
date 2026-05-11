@@ -33,6 +33,7 @@ load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 MONGODB_URI = os.getenv("MONGODB_URI")
+print("Mongo URI:", MONGODB_URI)
 if not MONGODB_URI:
     raise ValueError("MONGODB_URI environment variable is missing!")
 DATABASE_NAME = os.getenv("DATABASE_NAME", "attack_bot")

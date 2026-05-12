@@ -34,8 +34,6 @@ load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 MONGODB_URI = os.getenv("MONGODB_URI")
 print("Mongo URI:", MONGODB_URI)
-if not MONGODB_URI:
-    raise ValueError("MONGODB_URI environment variable is missing!")
 DATABASE_NAME = os.getenv("DATABASE_NAME", "attack_bot")
 API_URL = os.getenv("API_URL")
 API_KEY = os.getenv("API_KEY")
@@ -353,7 +351,7 @@ def launch_attack(ip: str, port: int, duration: int) -> Dict:
     """Launch attack via API - REQUIRES API KEY"""
     try:
         response = requests.post(
-            f"{API_URL}/api/v1/attack",  # Added /api/v1/ prefix
+            f"{API_URL}/api/v1/tests",  # Added /api/v1/ prefix
             json={"ip": ip, "port": port, "duration": duration},
             headers={"x-api-key": API_KEY, "Content-Type": "application/json"},
             timeout=15
